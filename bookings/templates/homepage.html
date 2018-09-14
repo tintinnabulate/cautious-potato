@@ -1,0 +1,20 @@
+{% extends "homepage-base.html" %}
+{% block title %}Home{% endblock %}
+{% block navbar %}
+            <li class=active><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('new_booking_1') }}">Register</a></li>
+{% endblock %}
+{% block content %}
+<link href={{ url_for('static', filename='css/homepage.css') }} rel="stylesheet">
+  <fieldset>
+  <legend>Bookings</legend>
+  <div class="container container-info">Bookings site<br></div>
+  <form method=get action={{ url_for('new_booking_1') }}><br><br>
+  <label>
+  <div class="container container-reserve">Make a booking</div>
+  <br>
+  <input type=submit class="btn btn-success btn-lg" value="Make a Booking">
+  </label>
+  </form>
+  </fieldset>
+{% endblock %}

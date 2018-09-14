@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Make a Booking{% endblock %}
+
+{% block content %}
+
+{% import 'macros.html' as macros %}
+
+        <fieldset>
+          <legend>Make a Booking</legend>
+          <div class="row">
+            <div class="col-md-4">
+		    <table class='table table-bordered'>
+			    {% for abbrev, full_name in properties.items() %}
+			    <tr><td>{{abbrev}}</td><td class='text-left'>{{full_name}}</td></tr>
+			    {% endfor %}
+		    </table>
+	    </div>
+            <div class="col-md-4 well">
+              <form role="form" action="{{ url_for('new_booking_1') }}" method="POST" accept-charset="utf-8">
+                {{ form.csrf_token }}
+                {{ macros.form_field(form.booking_reference) }}
+                {{ macros.form_field(form.first_name) }}
+                {{ macros.form_field(form.last_name) }}
+                {{ macros.form_field(form.email, type="email") }}
+                {{ macros.form_field(form.phone, type="tel") }}
+                {{ macros.form_field(form.notes) }}
+                {{ macros.form_field(form.source) }}
+                {{ macros.form_field(form.number_of_people) }}
+                {{ macros.form_field(form.gross) }}
+                <div class="checkbox"><label>{{ form.is_discount }} {{ form.is_discount.label.text }}</label></div><br>
+                <div class="checkbox"><label>{{ form.is_commission }} {{ form.is_commission.label.text }}</label></div><br>
+                <div class="checkbox"><label>{{ form.is_greeting }} {{ form.is_greeting.label.text }}</label></div><br>
+                <div class="checkbox"><label>{{ form.is_laundry }} {{ form.is_laundry.label.text }}</label></div><br>
+                <div class="checkbox"><label>{{ form.is_cleaning }} {{ form.is_cleaning.label.text }}</label></div><br>
+                <div class="checkbox"><label>{{ form.is_con }} {{ form.is_con.label.text }}</label></div><br>
+                <button type="submit" class="btn btn-success btn-lg">Make booking</button>
+              </form>
+            </div> <!-- col-md-4 -->
+            <div class="col-md-4"></div>
+          </div> <!-- row -->
+        </fieldset>
+{% endblock %}

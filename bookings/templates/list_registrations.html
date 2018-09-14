@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}View bookings{% endblock %}
+{% block content %}
+<p class='text-left'>
+<table class="table table-striped">
+	<tr><th>Row Num.</th><th>booking_date</th><th>booking_reference</th></tr>
+    {% for b in bookings %}
+    <tr><td>{{ loop.index }}</td><td>{{ b.booking_date }}</td><td>{{ b.booking_reference }}</td></tr>
+    {% endfor %}
+</table>
+</p>
+{% endblock %}
